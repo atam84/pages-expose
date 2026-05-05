@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sudoku Cube — 3D Sudoku Puzzle Game</title>
+  <meta name="description" content="Sudoku Cube wraps classic Sudoku around a 3D rotating cube with 6 faces. Shared edges connect every face — the ultimate logic puzzle." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #0f1620;
+      color: #d0d8e8;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    header {
+      background: #161f2e;
+      border-bottom: 1px solid #1e2d42;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header .brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    header nav a {
+      color: #7eb3f5;
+      text-decoration: none;
+      font-size: 14px;
+      margin-left: 24px;
+    }
+
+    header nav a:hover { text-decoration: underline; }
+
+    .hero {
+      text-align: center;
+      padding: 72px 24px 56px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .hero h1 span { color: #7eb3f5; }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #8a9ab8;
+      margin-bottom: 36px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #7eb3f5;
+      color: #0f1620;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 32px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .btn:hover { background: #a0c8ff; }
+
+    .features {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 72px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #161f2e;
+      border: 1px solid #1e2d42;
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .card .icon { font-size: 1.6rem; margin-bottom: 10px; }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .card p { font-size: 14px; color: #6a7d99; line-height: 1.6; }
+
+    .support {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .support h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 24px;
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+
+    .support-item {
+      background: #161f2e;
+      border: 1px solid #1e2d42;
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+
+    .support-item h4 { font-size: 14px; font-weight: 600; color: #ffffff; margin-bottom: 6px; }
+    .support-item p  { font-size: 13px; color: #6a7d99; }
+    .support-item a  { color: #7eb3f5; font-size: 13px; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #1e2d42;
+      margin: 0 24px 56px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 13px;
+      color: #4a6080;
+      border-top: 1px solid #1e2d42;
+    }
+
+    footer a { color: #7eb3f5; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="brand">Sudoku Cube</span>
+  <nav>
+    <a href="#support">Support</a>
+    <a href="privacy-policy/">Privacy Policy</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Sudoku on a <span>3D Cube</span></h1>
+  <p>Six faces. Shared edges. One cube. Classic Sudoku logic taken to the third dimension — rotate, think, solve.</p>
+  <a class="btn" href="https://play.google.com/store/apps/details?id=com.atam84.sudokucube" target="_blank" rel="noopener">
+    Get it on Google Play
+  </a>
+</section>
+
+<section class="features">
+  <div class="card">
+    <div class="icon">🧩</div>
+    <h3>400+ Handcrafted Puzzles</h3>
+    <p>Easy, Medium, Hard, and Expert packs — each with 20 puzzles. Unlock packs as you progress.</p>
+  </div>
+  <div class="card">
+    <div class="icon">∞</div>
+    <h3>Endless Mode</h3>
+    <p>Unlimited puzzles generated on-device. No internet required — play anywhere, forever.</p>
+  </div>
+  <div class="card">
+    <div class="icon">💀</div>
+    <h3>Killer Cube</h3>
+    <p>No digit clues — cage sums replace them. The hardest Sudoku variant brought to 3D.</p>
+  </div>
+  <div class="card">
+    <div class="icon">📅</div>
+    <h3>Daily Puzzle</h3>
+    <p>A new cube every day. Build your streak and come back tomorrow for the next challenge.</p>
+  </div>
+  <div class="card">
+    <div class="icon">🎓</div>
+    <h3>Step-by-Step Trainer</h3>
+    <p>Brand new to 3D Sudoku? The trainer walks you through shared-edge mechanics with live guidance.</p>
+  </div>
+  <div class="card">
+    <div class="icon">🎨</div>
+    <h3>Themes & Accessibility</h3>
+    <p>Dark, Light, Neon, Forest, Sunset, and more. Adjustable text size and TalkBack support.</p>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section class="support" id="support">
+  <h2>Support</h2>
+  <div class="support-grid">
+    <div class="support-item">
+      <h4>Contact</h4>
+      <p>Questions, bug reports, or feedback?</p>
+      <a href="mailto:amine.tamdy@gmail.com">amine.tamdy@gmail.com</a>
+    </div>
+    <div class="support-item">
+      <h4>Privacy Policy</h4>
+      <p>How we handle your data.</p>
+      <a href="privacy-policy/">Read Privacy Policy →</a>
+    </div>
+    <div class="support-item">
+      <h4>Version</h4>
+      <p>Current release: <strong style="color:#d0d8e8">1.1.36</strong></p>
+      <p style="margin-top:4px">Platform: Android</p>
+    </div>
+  </div>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="card" style="margin-bottom:12px">
+    <h3>How do shared edges work?</h3>
+    <p style="margin-top:8px">Cells that sit on an edge between two faces appear on both faces at once. When you place a digit in that cell, it counts toward the rows, columns, and boxes on every face it touches. This is the core mechanic that makes Sudoku Cube different from flat Sudoku.</p>
+  </div>
+
+  <div class="card" style="margin-bottom:12px">
+    <h3>My progress disappeared — what happened?</h3>
+    <p style="margin-top:8px">Progress is stored locally on your device. Uninstalling the app or clearing app data will erase it. We recommend completing a pack before clearing storage.</p>
+  </div>
+
+  <div class="card" style="margin-bottom:12px">
+    <h3>How do I change the language?</h3>
+    <p style="margin-top:8px">Go to Settings → Language and pick from the available options. The app supports English, Français, Español, Português, and more.</p>
+  </div>
+
+  <div class="card" style="margin-bottom:12px">
+    <h3>How do I opt out of personalised ads?</h3>
+    <p style="margin-top:8px">Go to Settings → Privacy Settings inside the app to change your ad consent at any time. You can also reset your Advertising ID in your Android device settings under Privacy → Ads.</p>
+  </div>
+
+  <div class="card">
+    <h3>Something else?</h3>
+    <p style="margin-top:8px">Send us an email at <a href="mailto:amine.tamdy@gmail.com">amine.tamdy@gmail.com</a> and we'll get back to you as soon as possible.</p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Amine Tamdy &nbsp;·&nbsp;
+  <a href="privacy-policy/">Privacy Policy</a> &nbsp;·&nbsp;
+  <a href="mailto:amine.tamdy@gmail.com">Contact</a>
+</footer>
+
+</body>
+</html>
