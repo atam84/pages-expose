@@ -1,0 +1,46 @@
+{
+  "service": "sudoku-cube-leaderboard",
+  "version": 1,
+  "status": "not-implemented",
+  "message": "The daily leaderboard has no backend yet. This site is static hosting; POST endpoints return 404. Clients must treat any non-2xx from this path as 'leaderboard unavailable' and continue without blocking gameplay.",
+  "endpoints": {
+    "submit": {
+      "method": "POST",
+      "path": "/api/leaderboard/submit",
+      "status": "not-implemented",
+      "request": {
+        "date": "YYYY-MM-DD",
+        "userId": "device-scoped random id",
+        "solveTime": "milliseconds (integer)",
+        "moveCount": "integer",
+        "hash": "HMAC-SHA-256 of the canonical payload"
+      },
+      "response": {
+        "rank": "integer",
+        "percentile": "number",
+        "topTimes": [
+          {
+            "userId": "string",
+            "solveTime": "integer"
+          }
+        ]
+      },
+      "statusCodes": {
+        "200": "accepted \u2014 leaderboard result returned",
+        "400": "solve is below the leaderboard threshold",
+        "409": "a solve for this date+user is already recorded",
+        "404": "endpoint not deployed \u2014 client hides the leaderboard panel and stops retrying",
+        "501": "endpoint not implemented \u2014 treated as not deployed",
+        "405": "method not allowed on static hosting \u2014 treated as not deployed",
+        "410": "endpoint retired \u2014 treated as not deployed",
+        "5xx": "transient backend fault \u2014 client keeps the submission queued and retries"
+      }
+    },
+    "top": {
+      "method": "GET",
+      "path": "/api/leaderboard/top/<YYYY-MM-DD>.json",
+      "status": "not-implemented",
+      "note": "Reserved for a future static daily snapshot published alongside the puzzle files."
+    }
+  }
+}

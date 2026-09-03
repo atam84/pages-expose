@@ -1,0 +1,10 @@
+{
+  "service": "sudoku-cube",
+  "version": 1,
+  "services": {
+    "leaderboard": {
+      "path": "/api/leaderboard",
+      "status": "not-implemented"
+    }
+  }
+}
